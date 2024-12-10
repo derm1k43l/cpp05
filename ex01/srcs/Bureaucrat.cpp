@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
 
 // Constructor
 Bureaucrat::Bureaucrat(std::string const& name, int grade) : name_(name), grade_(grade)
@@ -64,15 +64,15 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat const& bureaucrat)
     return os;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(Form& form)
 {
     try 
     {
         form.beSigned(*this); // attempt to sign the form
         std::cout << getName() << " signed " << form.getName() << std::endl;
     } 
-    catch (std::exception &e) 
+    catch (std::exception& e) 
     {
-        std::cout << getName() << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cerr << getName() << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
     }
 }

@@ -1,7 +1,7 @@
 CXX = c++
 CXXGLAGS = -Wall -Wextra -Werror -std=c++17 -I$(INCDIR) 
 
-NAME = Formup
+NAME = formup
 
 SRCDIR = srcs
 INCDIR = inc

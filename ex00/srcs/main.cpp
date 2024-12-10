@@ -8,7 +8,7 @@ int main()
     std::cout << bureaucrat1 << std::endl;
     Bureaucrat bureaucrat2("Calin", 150);  // Valid
     std::cout << bureaucrat2 << std::endl;
-    std::cout << "============== INVALID ============" << std::endl;
+    std::cout << "============== INVALID CREATION============" << std::endl;
     try
     {
         Bureaucrat bureaucrat3("Marius", -42);  // Invalid grade
@@ -27,7 +27,7 @@ int main()
     {
         std::cout << "Exception for Mihai: " << e.what() << std::endl;
     }
-    std::cout << "============== INVALID incr and decr ======" << std::endl;
+    std::cout << "============== INVALID CHANGE ============" << std::endl;
     try
     {
         std::cout << bureaucrat1 << std::endl;

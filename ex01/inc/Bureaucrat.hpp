@@ -5,14 +5,14 @@
 #include <stdexcept>
 #include "Form.hpp"
 
-
+class Form;
 class Bureaucrat
 {
     public:
         // canonical form
-        Bureaucrat(std::string const& name, int grade); // Constructor
-        Bureaucrat(Bureaucrat const& other); // Copy constructor
-        Bureaucrat& operator=(Bureaucrat const& other); // Copy assignment operator
+        Bureaucrat(std::string const& name, int grade);
+        Bureaucrat(Bureaucrat const& other);
+        Bureaucrat& operator=(Bureaucrat const& other);
         ~Bureaucrat();
 
         // methods 
@@ -34,9 +34,9 @@ class Bureaucrat
             const char *what() const throw();
         };
 
-        friend std::ostream& operator<<(std::ostream& os, Bureaucrat const& bureaucrat);
-
     private:
         std::string const name_;
         int               grade_;
 };
+
+std::ostream& operator<<(std::ostream& os, Bureaucrat const& bureaucrat);

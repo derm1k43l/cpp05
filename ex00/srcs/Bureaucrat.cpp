@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
 
 // Constructor
 Bureaucrat::Bureaucrat(std::string const& name, int grade) : name_(name), grade_(grade)
@@ -21,7 +21,9 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const& other)
 }
 
 // Destructor
-Bureaucrat::~Bureaucrat() {}
+Bureaucrat::~Bureaucrat()
+{
+}
 
 // Methods
 std::string const& Bureaucrat::getName() const

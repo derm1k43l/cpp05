@@ -2,17 +2,18 @@
 
 #include <iostream>
 #include <string>
+#include "Bureaucrat.hpp"
 
 // circular dependency
 class Bureaucrat; // Forward declaration
 
-class Form
+class AForm
 {
     public:
-        Form(const std::string &name, const int signGrade, const int execGrade);
-        Form(const Form& other);
-        Form& operator=(const Form& other);
-        ~Form();
+        AForm(const std::string& name, const int signGrade, const int execGrade);
+        AForm(const AForm& other);
+        AForm& operator=(const AForm& other);
+        virtual ~AForm();
 
         const std::string&      getName() const;
         int                     getSignGrade() const;
@@ -20,6 +21,7 @@ class Form
         bool                    isSigned() const;
 
         void                    beSigned(Bureaucrat& bureaucrat);
+        void                    execute(Bureaucrat const& bureaucrat) const;
 
         class GradeTooLowException : public std::exception
         {
@@ -33,12 +35,18 @@ class Form
         {
             const char* what() const throw();
         };
+        class FormNotSignedException : public std::exception
+        {
+            const char* what() const throw();
+        };
 
     private:
         const std::string name_;
         bool              isSigned_;
         const int         signGrade_;
         const int         execGrade_;
+        // pure virtual method
+        virtual void      performAction() const = 0;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& form);

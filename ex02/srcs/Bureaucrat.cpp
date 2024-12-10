@@ -10,7 +10,8 @@ Bureaucrat::Bureaucrat(std::string const& name, int grade) : name_(name), grade_
 }
 
 // Copy constructor
-Bureaucrat::Bureaucrat(Bureaucrat const& other) : name_(other.name_), grade_(other.grade_) 
+Bureaucrat::Bureaucrat(Bureaucrat const& other) 
+    : name_(other.name_), grade_(other.grade_) 
 {
 }
 
@@ -68,15 +69,31 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat const& bureaucrat)
     return os;
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
     try 
     {
-        form.beSigned(*this); // attempt to sign the form
+        form.beSigned(*this);
         std::cout << getName() << " signed " << form.getName() << std::endl;
     } 
     catch (std::exception& e) 
     {
-        std::cerr << getName() << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cerr << getName() << " cannot sign " << form.getName() 
+                  << " because " << e.what() << std::endl;
     }
+}
+
+void Bureaucrat::executeForm(AForm const& form)
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << getName() << " executed " << form.getName() << std::endl;
+    }
+    catch
+    (std::exception& e)
+    {
+        std::cerr << getName() << " cannot execute " << form.getName()
+                               << " because " << e.what() << std::endl;
+    } 
 }
